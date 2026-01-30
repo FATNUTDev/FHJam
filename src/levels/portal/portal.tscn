@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw5sd1jnsf2l1"]
+
+[ext_resource type="Texture2D" uid="uid://4j1h7j2duq0a" path="res://icon.svg" id="1_dv6fq"]
+
+[sub_resource type="TileSet" id="TileSet_dv6fq"]
+
+[node name="Portal" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.5)
+texture = ExtResource("1_dv6fq")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_dv6fq")
