@@ -1,18 +1,19 @@
 extends Node
 
-signal switch_to_mask_mode
+
+
+signal switch_mask_mode
 signal player_took_damage
 
 
 var mask_on := false
 var sanity_value := 0 #Max 100
-var current_level := 0
+var current_level := 1
 var player_health #TBD
-
 
 func on_mask_switch():
 	print(mask_on) #TODO
-	switch_to_mask_mode.emit()
+	switch_mask_mode.emit()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,3 +24,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func return_MENU_container():
+	return get_tree().get_root().get_node("MAIN/MENU")
+func return_LEVEL_container():
+	return get_tree().get_root().get_node("MAIN/LEVEL")
+func return_SCREENLAYER_container():
+	return get_tree().get_root().get_node("MAIN/SCREENLAYER")

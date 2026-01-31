@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw5sd1jnsf2l1"]
+[gd_scene load_steps=4 format=3 uid="uid://dw5sd1jnsf2l1"]
 
-[ext_resource type="Texture2D" uid="uid://4j1h7j2duq0a" path="res://icon.svg" id="1_dv6fq"]
+[ext_resource type="Script" uid="uid://hb3u1wjm7v83" path="res://src/levels/portal/portal.gd" id="1_dv6fq"]
+[ext_resource type="Texture2D" uid="uid://4j1h7j2duq0a" path="res://icon.svg" id="2_vj4ag"]
 
-[sub_resource type="TileSet" id="TileSet_dv6fq"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vj4ag"]
 
 [node name="Portal" type="Node2D"]
+script = ExtResource("1_dv6fq")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_vj4ag")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 1.5)
-texture = ExtResource("1_dv6fq")
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_vj4ag")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_dv6fq")
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

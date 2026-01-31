@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=4 uid="uid://c2lsgx0rk6dv8"]
+
+[ext_resource type="Script" uid="uid://cb5qevib5r7y8" path="res://src/levels/level_template.gd" id="1_a0sv2"]
+[ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="2_hxmb5"]
+[ext_resource type="PackedScene" uid="uid://dw5sd1jnsf2l1" path="res://src/levels/portal/portal.tscn" id="3_tppch"]
+[ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="4_hxmb5"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_a0sv2")
+
+[node name="MaskOnTileLayer" parent="." instance=ExtResource("2_hxmb5")]
+tile_map_data = PackedByteArray("AAD2////AwADAAEAAAD2/wAAAwAEAAMAAAD3/wAAAwACAAMAAAD4/wEAAwAAAAMAAAD5/wEAAwACAAMAAAD6/wIAAwAAAAMAAAD7/wIAAwABAAMAAAD8/wIAAwABAAMAAAD9/wIAAwABAAMAAAD+/wIAAwAHAAAAAAD+/wMAAwAEAAMAAAD//wMAAwABAAMAAAAAAAMAAwABAAMAAAABAAMAAwABAAMAAAACAAMAAwAHAAAAAAACAAQAAwAEAAMAAAADAAQAAwABAAMAAAAEAAQAAwABAAMAAAAFAAQAAwACAAMAAAAGAAMAAwADAAMAAAAHAAIAAwAAAAMAAAAIAAIAAwAHAAMAAAAIAAEAAwADAAEAAAAIAAAAAwAEAAAAAAAJAAAAAwAHAAMAAAAJAP//AwADAAEAAAAJAP7/AwAHAAAAAAAIAP7/AwAEAAMAAAAIAP3/AwAHAAAAAAAHAP3/AwABAAMAAAAGAP3/AwAEAAMAAAAGAPz/AwAHAAAAAAAFAPz/AwABAAMAAAAEAPz/AwABAAMAAAADAPz/AwAAAAMAAAACAPv/AwACAAMAAAABAPv/AwABAAMAAAD///v/AwABAAMAAAAAAPv/AwABAAMAAAD+//v/AwABAAMAAAD9//v/AwABAAMAAAD7//v/AwABAAMAAAD8//v/AwABAAMAAAD6//v/AwABAAMAAAD5//v/AwABAAMAAAD4//v/AwABAAMAAAD3//v/AwABAAMAAAD2//v/AwABAAMAAAD1//v/AwABAAMAAAD0//v/AwAEAAAAAAD0//z/AwADAAEAAAD0//3/AwAEAAMAAAD1//3/AwAHAAAAAAD1//7/AwAEAAMAAAD2//7/AwAHAAAAAAA=")
+
+[node name="MaskOffTileLayer" parent="." instance=ExtResource("2_hxmb5")]
+
+[node name="Portal" parent="." instance=ExtResource("3_tppch")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_hxmb5")]
+position = Vector2(44, 41)

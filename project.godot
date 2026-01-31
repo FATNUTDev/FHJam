@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="FHJam"
-run/main_scene="uid://bkxmr05ju6qst"
+run/main_scene="uid://d1ecm7iq3idow"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://src/Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -41,6 +46,7 @@ switch_mask={
 2d_physics/layer_2="world"
 2d_physics/layer_3="mask_only"
 2d_physics/layer_4="no_mask_only"
+2d_physics/layer_5="portal"
 
 [rendering]
 
