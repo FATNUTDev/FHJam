@@ -7,9 +7,8 @@ signal player_dead
 
 var mask_on := false
 var sanity_value := 0 #Max 100
-var current_level := 0
-var player_health #TBD
-
+var current_level := 1
+var player_health := 6#TBD
 
 func on_mask_switch():
 	print(mask_on) #TODO
@@ -22,7 +21,13 @@ func on_player_dead():
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func return_MENU_container():
+	return get_tree().get_root().get_node("MAIN/MENU")
+func return_LEVEL_container():
+	return get_tree().get_root().get_node("MAIN/LEVEL")
+func return_SCREENLAYER_container():
+	return get_tree().get_root().get_node("MAIN/SCREENLAYER")

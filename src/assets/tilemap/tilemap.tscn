@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dff1mwdvdjdqc" path="res://src/assets/tilemap/tilemap.tres" id="1_tjlyr"]
 
-[node name="MaskOnTileLayer" type="TileMapLayer"]
+[node name="TileLayer" type="TileMapLayer"]
 tile_set = ExtResource("1_tjlyr")
 rendering_quadrant_size = 18
 physics_quadrant_size = 18

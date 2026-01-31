@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ecm7iq3idow"]
+[gd_scene load_steps=4 format=3 uid="uid://d1ecm7iq3idow"]
 
 [ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="1_eewff"]
+[ext_resource type="PackedScene" uid="uid://78x8u4k16ia" path="res://src/levels/level_template.tscn" id="1_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="2_5q4o7"]
 [ext_resource type="PackedScene" path="res://src/levels/level1.tscn" id="1_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://cj4yym7wknlsi" path="res://src/Spikes/Spikes.tscn" id="2_5q4o7"]
 
 [node name="MAIN" type="Node2D"]
 
 [node name="LEVEL" type="Node2D" parent="."]
+
+[node name="LevelTemplate" parent="LEVEL" instance=ExtResource("1_gh0ne")]
+
+[node name="CharacterBody2D" parent="LEVEL/LevelTemplate" instance=ExtResource("2_5q4o7")]
+position = Vector2(-150, 81)
 
 [node name="LevelTemplate2" parent="LEVEL" instance=ExtResource("1_gh0ne")]
 

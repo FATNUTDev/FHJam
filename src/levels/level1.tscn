@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://cgkoojtb6bnas"]
+[gd_scene load_steps=5 format=4 uid="uid://dg15c4fqcwti6"]
 
-[ext_resource type="Script" path="res://src/levels/level_template.gd" id="1_ay5hh"]
+[ext_resource type="Script" uid="uid://cb5qevib5r7y8" path="res://src/levels/level_template.gd" id="1_ay5hh"]
 [ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="2_ih7hf"]
 [ext_resource type="PackedScene" uid="uid://dw5sd1jnsf2l1" path="res://src/levels/portal/portal.tscn" id="3_ghtb1"]
 [ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="4_ih7hf"]
@@ -14,7 +14,6 @@ tile_map_data = PackedByteArray("AAD7/wQAAwABAAMAAAD6/wQAAwAEAAMAAAD8/wQAAwABAAM
 [node name="MaskOffTileLayer" parent="." instance=ExtResource("2_ih7hf")]
 
 [node name="Portal" parent="." instance=ExtResource("3_ghtb1")]
-position = Vector2(112, -51)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_ih7hf")]
 position = Vector2(-52, 63)
