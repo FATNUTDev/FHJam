@@ -1,7 +1,8 @@
 extends Node
 
-signal switch_to_mask_mode
+signal switch_mask_mode
 signal player_took_damage
+signal player_dead
 
 
 var mask_on := false
@@ -12,8 +13,10 @@ var player_health #TBD
 
 func on_mask_switch():
 	print(mask_on) #TODO
-	switch_to_mask_mode.emit()
+	switch_mask_mode.emit()
 
+func on_player_dead():
+	player_dead.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
