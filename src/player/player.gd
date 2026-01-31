@@ -40,9 +40,10 @@ func _physics_process(delta: float) -> void:
 	if velocity.x == 0:
 		spikes_collided = false
 		
-
 	move_and_slide()
 	pick_mask()
+	
+	debug_input()
 
 func pick_mask():
 	if Input.is_action_just_pressed("switch_mask"):
@@ -54,6 +55,7 @@ func pick_mask():
 		else:
 			sanity_timer.stop()
 
+
 func on_spike_collision():
 	spikes_collided = true
 	if velocity.x == 0:
@@ -63,11 +65,18 @@ func on_spike_collision():
 	velocity.y = -velocity.y
 
 func on_mask_switch_signal():
-	print("player switched")
+	#print("player switched")
+	pass
 	
 func on_player_dead_signal():
-	print("Game Over")
+	#print("Game Over")
+	pass
 
 func _on_sanity_timer_timeout() -> void:
 	Global.sanity_value += 1
-	print(Global.sanity_value)
+	#print(Global.sanity_value)
+
+
+func debug_input(): #Use this to debug anything you want, remove the others code down here.
+	if Input.is_action_just_pressed("debug"):
+		Global.spawn_end_screen()

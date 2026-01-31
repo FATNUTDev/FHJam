@@ -5,6 +5,7 @@ extends Node2D
 @onready var portal = $Portal
 
 func _ready() -> void:
+	Global.mask_on = false
 	Global.switch_mask_mode.connect(switch_on_mask_signal)
 	switch_on_mask_signal()
 

@@ -11,3 +11,5 @@
 [node name="MenuRoot" parent="MENU" instance=ExtResource("2_gh0ne")]
 
 [node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
+
+[node name="ENDOVERLAY" type="CanvasLayer" parent="."]
