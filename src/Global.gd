@@ -3,7 +3,7 @@ extends Node
 signal switch_mask_mode
 signal player_took_damage
 signal player_dead
-
+signal level_can_be_loaded
 
 var mask_on := false
 var sanity_value := 0 #Max 100
@@ -31,3 +31,6 @@ func return_LEVEL_container():
 	return get_tree().get_root().get_node("MAIN/LEVEL")
 func return_SCREENLAYER_container():
 	return get_tree().get_root().get_node("MAIN/SCREENLAYER")
+
+func emit_level_loading_signal():
+	level_can_be_loaded.emit()

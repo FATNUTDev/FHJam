@@ -5,10 +5,15 @@ extends Node2D
 
 func _ready() -> void:
 	Global.switch_mask_mode.connect(switch_on_mask_signal)
+	switch_on_mask_signal()
 
 func switch_on_mask_signal():
 	mask_on_layer.collision_enabled = Global.mask_on
+	mask_off_layer.collision_enabled = !Global.mask_on
+	
 	if Global.mask_on: #TODO
 		mask_on_layer.modulate = Color(1,0.3,0.3,1)
+		mask_off_layer.modulate = Color(0.3,0.3,1,1)
 	else:
-		mask_on_layer.modulate = Color(1,1,1.7,.3)
+		mask_on_layer.modulate = Color(1,0.3,0.3,0)
+		mask_off_layer.modulate = Color(1,1,1,1)
