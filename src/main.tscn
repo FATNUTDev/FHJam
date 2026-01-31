@@ -25,7 +25,7 @@ position = Vector2(-150, 81)
 
 [node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="hud" parent="SCREENOVERLAY" instance=ExtResource("1_eewff")]
 
-[editable path="LEVEL/LevelTemplate"]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)

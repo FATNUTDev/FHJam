@@ -18,3 +18,9 @@ texture = ExtResource("1_4anbu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_qnmj6")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_sanity_timer_timeout"]
