@@ -13,12 +13,14 @@ script = ExtResource("1_gfjdm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16470589, 0.003921569, 0.05882353, 0.78039217)
+anchors_preset = -1
+anchor_right = 0.99600005
+anchor_bottom = 0.989
+offset_left = -1.0
+offset_top = 3.0
+offset_right = -0.39208984
+offset_bottom = 0.12799072
+color = Color(0.8982333, 0.44566375, 0.16950226, 1)
 
 [node name="MenuButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
