@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkxmr05ju6qst"]
+[gd_scene load_steps=6 format=3 uid="uid://bkxmr05ju6qst"]
 
 [ext_resource type="Script" uid="uid://cxxcqo0qgft51" path="res://src/UI/hud.gd" id="1_3l0hb"]
 [ext_resource type="Texture2D" uid="uid://vauxxg7naj7b" path="res://src/assets/sanity/bar.png" id="2_p5eb6"]
 [ext_resource type="Texture2D" uid="uid://ep4n55730akv" path="res://src/assets/sanity/bar-crit.png" id="3_aqumb"]
 [ext_resource type="Texture2D" uid="uid://csyemn3efot43" path="res://src/assets/sanity/bar-full.png" id="4_c6fdt"]
+[ext_resource type="PackedScene" uid="uid://04ftvfenp0pk" path="res://src/UI/health.tscn" id="5_p5eb6"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_3l0hb")
@@ -33,3 +34,5 @@ value = 75.0
 texture_under = ExtResource("2_p5eb6")
 texture_over = ExtResource("3_aqumb")
 texture_progress = ExtResource("4_c6fdt")
+
+[node name="Health-Bar" parent="." instance=ExtResource("5_p5eb6")]
