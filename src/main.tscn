@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d1ecm7iq3idow"]
+[gd_scene load_steps=2 format=3 uid="uid://d1ecm7iq3idow"]
+
+[ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="1_eewff"]
 
 [node name="MAIN" type="Node2D"]
 
@@ -7,3 +9,8 @@
 [node name="MENU" type="CanvasLayer" parent="."]
 
 [node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
+
+[node name="hud" parent="SCREENOVERLAY" instance=ExtResource("1_eewff")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
