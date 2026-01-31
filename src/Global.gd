@@ -9,7 +9,6 @@ var mask_on := false
 var sanity_value := 0 #Max 100
 var current_level := 1
 var player_health := 6#TBD
-var can_load_level = false
 
 func on_mask_switch():
 	switch_mask_mode.emit()
