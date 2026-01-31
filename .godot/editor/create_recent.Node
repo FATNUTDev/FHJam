@@ -1,3 +1,7 @@
+Control
+TextureProgressBar
+CanvasLayer
+ProgressBar
 TileMap
 TileMapLayer
 Sprite2D
