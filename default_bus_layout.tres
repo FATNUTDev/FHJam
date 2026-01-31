@@ -1,3 +1,112 @@
-[gd_resource type="AudioBusLayout" load_steps=0 format=3 uid="uid://vdmqu7bufwyg"]
+[gd_resource type="AudioBusLayout" load_steps=11 format=3 uid="uid://vdmqu7bufwyg"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/32_hz = -19.0
+band_db/100_hz = -8.4
+band_db/3200_hz = -0.9
+band_db/10000_hz = -8.4
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_g28q7"]
+resource_name = "EQ"
+band_db/1000_hz = -9.3
+band_db/3200_hz = -60.0
+band_db/10000_hz = -60.0
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j3pel"]
+resource_name = "Phaser"
+range_min_hz = 589.13
+range_max_hz = 1168.598
+feedback = 0.4
+depth = 1.2
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -7.0
+release_ms = 163.0
+mix = 0.5
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_j3pel"]
+resource_name = "HighPassFilter"
+cutoff_hz = 20.0
+db = 3
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+pre_gain = -14.35
+keep_hf_hz = 1889.0
+drive = 0.15
+post_gain = 2.65
+
+[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_j3pel"]
+resource_name = "HardLimiter"
+pre_gain_db = 1.22
+release = 0.4
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+cutoff_hz = 6897.0
+db = 2
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_j3pel"]
+resource_name = "Chorus"
+voice_count = 4
+dry = 0.79
+wet = 0.79
+voice/1/delay_ms = 14.61
+voice/1/cutoff_hz = 12132.0
+voice/2/delay_ms = 0.0
+voice/2/rate_hz = 1.0
+voice/2/depth_ms = 0.29
+voice/3/delay_ms = 50.0
+voice/3/rate_hz = 1.0
+voice/3/depth_ms = 0.0
+voice/3/level_db = 0.0
+voice/3/cutoff_hz = 11519.0
+voice/3/pan = 0.0
+voice/4/delay_ms = 24.4
+voice/4/rate_hz = 1.0
+voice/4/depth_ms = 0.23
+voice/4/level_db = 0.0
+voice/4/cutoff_hz = 10015.0
+voice/4/pan = 0.0
+
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_j3pel"]
+resource_name = "StereoEnhance"
+pan_pullout = 0.0
+time_pullout_ms = 1.09
+surround = 0.5
 
 [resource]
+bus/1/name = &"EQ-Low_Reducer"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -1.7192268
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_j3pel")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Distorted"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 3.2424984
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectEQ_g28q7")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectPhaser_j3pel")
+bus/2/effect/1/enabled = true
+bus/2/effect/2/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/2/effect/2/enabled = true
+bus/2/effect/3/effect = SubResource("AudioEffectHighPassFilter_j3pel")
+bus/2/effect/3/enabled = true
+bus/2/effect/4/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/2/effect/4/enabled = true
+bus/2/effect/5/effect = SubResource("AudioEffectHardLimiter_j3pel")
+bus/2/effect/5/enabled = true
+bus/2/effect/6/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/2/effect/6/enabled = true
+bus/2/effect/7/effect = SubResource("AudioEffectChorus_j3pel")
+bus/2/effect/7/enabled = true
+bus/2/effect/8/effect = SubResource("AudioEffectStereoEnhance_j3pel")
+bus/2/effect/8/enabled = true
