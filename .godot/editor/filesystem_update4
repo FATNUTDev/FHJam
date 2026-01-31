@@ -1,4 +1,4 @@
-res://src/levels/level_template.tscn
 res://src/player/player.tscn
-res://default_bus_layout.tres
-res://src/levels/portal/portal.tscn
+res://src/player/player.gd
+res://src/Global.gd
+res://src/levels/level_template.tscn
