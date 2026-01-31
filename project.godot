@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FHJam"
-run/main_scene="uid://bvsw8wtjsnxml"
+run/main_scene="uid://bkxmr05ju6qst"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -35,8 +35,16 @@ switch_mask={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+2d_physics/layer_3="mask_only"
+2d_physics/layer_4="no_mask_only"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.19255567, 0.1925557, 0.19255567, 1)

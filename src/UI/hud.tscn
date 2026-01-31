@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkxmr05ju6qst"]
+
+[ext_resource type="Script" uid="uid://cxxcqo0qgft51" path="res://src/UI/hud.gd" id="1_3l0hb"]
+[ext_resource type="Texture2D" uid="uid://vauxxg7naj7b" path="res://src/assets/sanity/bar.png" id="2_p5eb6"]
+[ext_resource type="Texture2D" uid="uid://ep4n55730akv" path="res://src/assets/sanity/bar-crit.png" id="3_aqumb"]
+[ext_resource type="Texture2D" uid="uid://csyemn3efot43" path="res://src/assets/sanity/bar-full.png" id="4_c6fdt"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_3l0hb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sanity" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 5.0
+offset_bottom = 45.0
+grow_horizontal = 0
+value = 50.0
+texture_under = ExtResource("2_p5eb6")
+texture_over = ExtResource("3_aqumb")
+texture_progress = ExtResource("4_c6fdt")
