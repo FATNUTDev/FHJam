@@ -1,0 +1,10 @@
+ColorRect
+CanvasLayer
+AnimationPlayer
+GPUParticles2D
+TileMapLayer
+Sprite2D
+Camera2D
+TileMap
+CollisionShape2D
+CharacterBody2D
