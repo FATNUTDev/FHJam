@@ -1,16 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://78x8u4k16ia"]
+[gd_scene load_steps=2 format=3 uid="uid://78x8u4k16ia"]
 
-[ext_resource type="Texture2D" uid="uid://df4xy60j5jjkr" path="res://src/assets/tilemap/block.png" id="1_jmmgl"]
+[ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="1_jmmgl"]
 
 [node name="LevelTemplate" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jmmgl")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(18, 0)
-texture = ExtResource("1_jmmgl")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(36, 0)
-texture = ExtResource("1_jmmgl")
+[node name="MaskOnTileLayer" parent="." instance=ExtResource("1_jmmgl")]
