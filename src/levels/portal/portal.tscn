@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw5sd1jnsf2l1"]
+[gd_scene load_steps=10 format=3 uid="uid://dw5sd1jnsf2l1"]
 
 [ext_resource type="Script" uid="uid://hb3u1wjm7v83" path="res://src/levels/portal/portal.gd" id="1_dv6fq"]
 [ext_resource type="Shader" uid="uid://dn1n2x5ncg7c1" path="res://src/levels/portal/portal_shader.gdshader" id="2_d6ecp"]
@@ -12,6 +12,32 @@ shader_parameter/red_color = Color(1, 0.1, 0.1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj4ag"]
 size = Vector2(12, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6ecp"]
+
+[sub_resource type="Gradient" id="Gradient_2w17v"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ia1q"]
+gradient = SubResource("Gradient_2w17v")
+width = 2
+height = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_johrt"]
+particle_flag_disable_z = true
+spread = 79.444
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.79999995
+orbit_velocity_min = 0.2630001
+orbit_velocity_max = 0.3000001
+radial_velocity_min = 4.9999776
+radial_velocity_max = 48.179977
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 10.589997
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 9.999997
+scale_min = 0.099999994
+scale_max = 1.1999999
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_dv6fq")
@@ -27,5 +53,11 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_vj4ag")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_d6ecp")
+amount = 40
+texture = SubResource("GradientTexture2D_8ia1q")
+process_material = SubResource("ParticleProcessMaterial_johrt")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

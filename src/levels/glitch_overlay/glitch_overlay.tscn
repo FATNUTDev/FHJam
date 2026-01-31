@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cus41ax5qqgh6"]
+
+[ext_resource type="Shader" uid="uid://b8wyma37fnkal" path="res://src/levels/glitch_overlay/glitch_shader.gdshader" id="1_sjatm"]
+[ext_resource type="Script" uid="uid://cpkvoui11y246" path="res://src/levels/glitch_overlay/glitch_script.gd" id="2_0clhb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjatm"]
+shader = ExtResource("1_sjatm")
+shader_parameter/base_strength = 0.01
+shader_parameter/burst_strength = 0.06
+shader_parameter/burst_duration = 0.25
+shader_parameter/burst_interval = 0.6
+shader_parameter/block_size = 55.0
+shader_parameter/color_shift = 3.0
+shader_parameter/flash_power = 0.25
+
+[node name="GlitchOverlay" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sjatm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0clhb")

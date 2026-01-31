@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ecm7iq3idow"]
+[gd_scene load_steps=3 format=3 uid="uid://csda1wkobq1x1"]
 
+[ext_resource type="PackedScene" path="res://src/UI/menu.tscn" id="2_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://cnyes7ravatvp" path="res://src/audio/audio_stream_player.tscn" id="4_3cfgd"]
 [ext_resource type="PackedScene" uid="uid://ca0ce6is6ueu8" path="res://src/UI/menu.tscn" id="2_gh0ne"]
 
 [node name="MAIN" type="Node2D"]
@@ -13,3 +15,9 @@
 [node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
 
 [node name="ENDOVERLAY" type="CanvasLayer" parent="."]
+[node name="AUDIO" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" parent="AUDIO" instance=ExtResource("4_3cfgd")]
+volume_db = 0.0
+autoplay = true
+bus = &"EQ-Low_Reducer"
