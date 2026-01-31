@@ -18,6 +18,7 @@ tile_map_data = PackedByteArray("AAD9/wIAAwADAAMAAAD5/wIAAwADAAIAAAD5/wEAAwADAAA
 tile_map_data = PackedByteArray("AAAJAAAAAwACAAMAAAAIAAAAAwAAAAMAAAA=")
 
 [node name="Portal" parent="." instance=ExtResource("3_ghtb1")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.8, 2.8)

@@ -1,32 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1ecm7iq3idow"]
 
-[ext_resource type="PackedScene" uid="uid://ca0ce6is6ueu8" path="res://src/UI/menu.tscn" id="1_eewff"]
-[ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="1_eewff"]
-[ext_resource type="PackedScene" uid="uid://78x8u4k16ia" path="res://src/levels/level_template.tscn" id="1_gh0ne"]
-[ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="2_5q4o7"]
-[ext_resource type="PackedScene" path="res://src/levels/level1.tscn" id="1_gh0ne"]
-[ext_resource type="PackedScene" uid="uid://cj4yym7wknlsi" path="res://src/Spikes/Spikes.tscn" id="2_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://ca0ce6is6ueu8" path="res://src/UI/menu.tscn" id="2_gh0ne"]
 
 [node name="MAIN" type="Node2D"]
 
 [node name="LEVEL" type="Node2D" parent="."]
 
-[node name="LevelTemplate" parent="LEVEL" instance=ExtResource("1_gh0ne")]
-
-[node name="CharacterBody2D" parent="LEVEL/LevelTemplate" instance=ExtResource("2_5q4o7")]
-position = Vector2(-150, 81)
-
-[node name="LevelTemplate2" parent="LEVEL" instance=ExtResource("1_gh0ne")]
-
-[node name="Spikes" parent="LEVEL" instance=ExtResource("2_5q4o7")]
-position = Vector2(-1, 65)
-
 [node name="MENU" type="CanvasLayer" parent="."]
 
-[node name="Root" parent="MENU" instance=ExtResource("1_eewff")]
+[node name="MenuRoot" parent="MENU" instance=ExtResource("2_gh0ne")]
 
-[node name="hud" parent="SCREENOVERLAY" instance=ExtResource("1_eewff")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(34, 17)
-zoom = Vector2(4, 4)
+[node name="SCREENOVERLAY" type="CanvasLayer" parent="."]

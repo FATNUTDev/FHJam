@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw5sd1jnsf2l1"]
+[gd_scene load_steps=6 format=3 uid="uid://dw5sd1jnsf2l1"]
 
 [ext_resource type="Script" uid="uid://hb3u1wjm7v83" path="res://src/levels/portal/portal.gd" id="1_dv6fq"]
+[ext_resource type="Shader" uid="uid://dn1n2x5ncg7c1" path="res://src/levels/portal/portal_shader.gdshader" id="2_d6ecp"]
 [ext_resource type="Texture2D" uid="uid://4j1h7j2duq0a" path="res://icon.svg" id="2_vj4ag"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w17v"]
+shader = ExtResource("2_d6ecp")
+shader_parameter/swirl_strength = 1.3
+shader_parameter/swirl_speed = 2.0
+shader_parameter/red_color = Color(1, 0.1, 0.1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj4ag"]
 size = Vector2(12, 16)
@@ -10,7 +17,9 @@ size = Vector2(12, 16)
 script = ExtResource("1_dv6fq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.14, 0.28)
+material = SubResource("ShaderMaterial_2w17v")
+position = Vector2(0, -0.040000916)
+scale = Vector2(0.14, 0.280625)
 texture = ExtResource("2_vj4ag")
 
 [node name="Area2D" type="Area2D" parent="."]
