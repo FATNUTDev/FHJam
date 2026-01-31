@@ -3,7 +3,9 @@ extends CharacterBody2D
 @onready var sanity_timer = $Timer
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -250.0
+var spikes_collided = false
+var prev_direction = 0
  
 
 func _ready() -> void:
@@ -28,10 +30,16 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction and !spikes_collided:
+		prev_direction = direction
 		velocity.x = direction * SPEED
-	else:
+	elif !spikes_collided:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED/3)
+	if velocity.x == 0:
+		spikes_collided = false
+		
 
 	move_and_slide()
 	pick_mask()
@@ -46,8 +54,13 @@ func pick_mask():
 		else:
 			sanity_timer.stop()
 
-func on_collision():
-	pass
+func on_spike_collision():
+	spikes_collided = true
+	if velocity.x == 0:
+		velocity.x = SPEED*3*prev_direction
+	else:
+		velocity.x = -velocity.x*3
+	velocity.y = -velocity.y
 
 func on_mask_switch_signal():
 	print("player switched")
