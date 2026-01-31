@@ -5,7 +5,8 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 
 func _ready() -> void:
-	connect("switch_to_mask_mode", on_mask_switch_signal)
+	pass
+	#connect("switch_to_mask_mode", on_mask_switch_signal)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,14 +26,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
 	pick_mask()
-	
+
+
 func pick_mask():
 	if Input.is_action_just_pressed("switch_mask"):
 		Global.mask_on = !Global.mask_on
 		Global.on_mask_switch()
-		
+
 func on_collision():
 	pass
 

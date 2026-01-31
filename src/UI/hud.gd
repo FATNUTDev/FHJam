@@ -4,7 +4,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sanity.texture_over.visible = false
+	#sanity.texture_over.visible = false
 	pass # Replace with function body.
 
 

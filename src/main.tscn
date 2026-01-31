@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d1ecm7iq3idow"]
+
+[node name="MAIN" type="Node2D"]
+
+[node name="LEVEL" type="Node2D" parent="."]
+
+[node name="MENU" type="CanvasLayer" parent="."]
+
+[node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
