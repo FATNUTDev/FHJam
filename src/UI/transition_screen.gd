@@ -4,6 +4,6 @@ extends Control
 
 func fade_in_out():
 	anim_player.play("fade_in_out")
-	
-func emit_global_level_signal():
-	Global.emit_level_loading_signal()
+
+func load_level_Global():
+	Global.load_level()
