@@ -1,16 +1,19 @@
 extends CharacterBody2D
 
 @onready var sanity_timer = $Timer
+@onready var animated_player = $AnimatedSprite2D
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -275.0
+const JUMP_VELOCITY = -200.0
 var spikes_collided = false
 var prev_direction = 0
+var mask = ""
+var mask_animation_finished = true
  
 
 func _ready() -> void:
-	Global.switch_mask_mode.connect(on_mask_switch_signal)
 	Global.player_dead.connect(on_player_dead_signal)
+	animated_player.animation_finished.connect(on_mask_switched_signal)
 
 func check_player_stats():
 	if Global.sanity_value > 99 or Global.player_health <= 0:
@@ -22,6 +25,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if mask_animation_finished:
+			animated_player.play("jump"+mask)
 	if !spikes_collided:
 		# Handle jump.
 		if Input.is_action_just_pressed("ui_jump") and is_on_floor():
@@ -33,11 +38,20 @@ func _physics_process(delta: float) -> void:
 		if direction:# and !spikes_collided:
 			prev_direction = direction
 			velocity.x = direction * SPEED
-		#elif !spikes_collided:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	#else:
-	#	velocity.x = move_toward(velocity.x, 0, SPEED/3)
+			
+		if velocity.x < 0 and is_on_floor() and mask_animation_finished:
+			if animated_player.flip_h:
+				animated_player.flip_h = false
+			animated_player.play("walk"+mask)
+		elif velocity.x > 0 and is_on_floor() and mask_animation_finished:
+			if !animated_player.flip_h:
+				animated_player.flip_h = true
+			animated_player.play("walk"+mask)
+		elif is_on_floor() and mask_animation_finished:
+			animated_player.play("idle"+mask)
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/3)
 	if velocity.x == 0:
@@ -50,6 +64,13 @@ func _physics_process(delta: float) -> void:
 
 func pick_mask():
 	if Input.is_action_just_pressed("switch_mask"):
+		mask_animation_finished = false
+		if !mask:
+			animated_player.play("put_mask")
+			mask = "mask"
+		else:
+			animated_player.play_backwards("put_mask")
+			mask = ""
 		Global.mask_on = !Global.mask_on
 		Global.on_mask_switch()
 		if Global.mask_on:
@@ -58,6 +79,8 @@ func pick_mask():
 		else:
 			sanity_timer.stop()
 
+func on_trampoline_collision():
+	velocity.y = JUMP_VELOCITY*1.5
 
 func on_spike_collision():
 	if !spikes_collided:
@@ -72,9 +95,8 @@ func on_spike_collision():
 			velocity.x = -SPEED*3*prev_direction
 		velocity.y = -velocity.y
 
-func on_mask_switch_signal():
-	#print("player switched")
-	pass
+func on_mask_switched_signal():
+	mask_animation_finished = true
 	
 func on_player_dead_signal():
 	#print("Game Over")
@@ -83,7 +105,6 @@ func on_player_dead_signal():
 func _on_sanity_timer_timeout() -> void:
 	Global.sanity_value += 1
 	#print(Global.sanity_value)
-
 
 func debug_input(): #Use this to debug anything you want, remove the others code down here.
 	if Input.is_action_just_pressed("debug"):

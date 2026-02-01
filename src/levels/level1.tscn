@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=4 uid="uid://dg15c4fqcwti6"]
+
+[ext_resource type="Script" uid="uid://cb5qevib5r7y8" path="res://src/levels/level_template.gd" id="1_bn18y"]
+[ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="2_tyup7"]
+[ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="3_ou3gi"]
+[ext_resource type="PackedScene" uid="uid://dw5sd1jnsf2l1" path="res://src/levels/portal/portal.tscn" id="4_juu1d"]
+[ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="5_ipgu1"]
+[ext_resource type="PackedScene" uid="uid://cj4yym7wknlsi" path="res://src/Spikes/Spikes.tscn" id="6_bsnmq"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_bn18y")
+
+[node name="hud" parent="." instance=ExtResource("2_tyup7")]
+
+[node name="StaticTileLayer" parent="." instance=ExtResource("3_ou3gi")]
+tile_map_data = PackedByteArray("AAD0//r/AwAEAAAAAAD0//v/AwADAAEAAAD0//z/AwADAAEAAAD0//3/AwADAAEAAAD0//7/AwADAAEAAAD0////AwADAAEAAAD0/wAAAwADAAEAAAD0/wEAAwADAAEAAAD0/wIAAwADAAEAAAD0/wMAAwADAAEAAAD0/wQAAwADAAEAAAD0/wUAAwAEAAMAAAD1/wUAAwABAAMAAAD2/wUAAwABAAMAAAD3/wUAAwABAAMAAAD4/wUAAwABAAMAAAD5/wUAAwABAAMAAAD6/wUAAwABAAMAAAD7/wUAAwABAAMAAAD8/wUAAwABAAMAAAD9/wUAAwABAAMAAAD+/wUAAwABAAMAAAD//wUAAwABAAMAAAAAAAUAAwABAAMAAAABAAUAAwABAAMAAAACAAUAAwABAAMAAAADAAUAAwABAAMAAAAEAAUAAwABAAMAAAAFAAUAAwABAAMAAAAGAAUAAwABAAMAAAAHAAUAAwABAAMAAAAIAAUAAwABAAMAAAAJAAUAAwAHAAMAAAAJAAQAAwADAAEAAAAJAAMAAwADAAEAAAAJAAIAAwADAAEAAAAJAAEAAwADAAEAAAAJAAAAAwADAAEAAAAJAP//AwADAAEAAAAJAP7/AwADAAEAAAAJAP3/AwADAAEAAAAJAPz/AwADAAEAAAAJAPv/AwADAAEAAAAJAPr/AwAHAAAAAAAIAPr/AwABAAMAAAAHAPr/AwABAAMAAAAGAPr/AwABAAMAAAAFAPr/AwABAAMAAAAEAPr/AwABAAMAAAD7//r/AwABAAMAAAD6//r/AwABAAMAAAD5//r/AwABAAMAAAD4//r/AwABAAMAAAD3//r/AwABAAMAAAD2//r/AwABAAMAAAD1//r/AwABAAMAAAD8//r/AwABAAMAAAD9//r/AwABAAMAAAD+//r/AwABAAMAAAD///r/AwABAAMAAAAAAPr/AwABAAMAAAABAPr/AwABAAMAAAACAPr/AwABAAMAAAADAPr/AwABAAMAAAA=")
+
+[node name="MaskOnTileLayer" parent="." instance=ExtResource("3_ou3gi")]
+tile_map_data = PackedByteArray("AAAHAAQAAwAAAAIAAAAHAAMAAwAAAAEAAAAIAAMAAwACAAEAAAAIAAQAAwACAAIAAAAIAAIAAwACAAEAAAAHAAIAAwAAAAEAAAAHAAEAAwAAAAAAAAAIAAEAAwACAAAAAAAFAAIAAwACAAAAAAAFAAMAAwACAAEAAAAFAAQAAwACAAIAAAAEAAQAAwAAAAIAAAAEAAMAAwAAAAEAAAAEAAIAAwAAAAAAAAA=")
+
+[node name="MaskOffTileLayer" parent="." instance=ExtResource("3_ou3gi")]
+tile_map_data = PackedByteArray("AAACAAQAAwADAAIAAAACAAMAAwAHAAAAAAABAAMAAwAAAAMAAAA=")
+
+[node name="Portal" parent="." instance=ExtResource("4_juu1d")]
+position = Vector2(144, -8)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_ipgu1")]
+position = Vector2(-176, 88)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(2.8, 2.8)
+editor_draw_limits = true
+
+[node name="SpikeParent1" type="Node2D" parent="."]
+position = Vector2(-80, 80)
+
+[node name="Spikes" parent="SpikeParent1" instance=ExtResource("6_bsnmq")]
+
+[node name="SpikeParent2" type="Node2D" parent="."]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-24, 80)
+
+[node name="Spikes" parent="SpikeParent2" instance=ExtResource("6_bsnmq")]
+
+[node name="SpikeParent3" type="Node2D" parent="."]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)
+position = Vector2(24, 80)
+
+[node name="Spikes" parent="SpikeParent3" instance=ExtResource("6_bsnmq")]
