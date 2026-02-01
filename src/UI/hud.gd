@@ -8,14 +8,12 @@ func _ready() -> void:
 	# reset to not pop in
 	sanity.value = 0
 	sanity.tint_over = Color(1,1,1,0)
+	Global.sanity_changed.connect(sanity_changed)
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func sanity_changed():
 	sanity.value = Global.sanity_value
-	
-	# Check to set to cirt enabled
+# Check to set to cirt enabled
 	if (!visible_crit && sanity.value >= 75):
 		sanity.tint_over = Color(1,1,1,1)
 		visible_crit = true
@@ -24,5 +22,4 @@ func _process(delta: float) -> void:
 	if (visible_crit && sanity.value < 75):
 		sanity.tint_over = Color(1,1,1,0)
 		visible_crit = false
-	
 	pass

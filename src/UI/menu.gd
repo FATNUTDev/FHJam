@@ -1,5 +1,7 @@
 extends Control
 
+func _ready() -> void:
+	pass
 
 func _on_play_button_pressed() -> void:
 	Global.load_transition()

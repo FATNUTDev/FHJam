@@ -4,6 +4,7 @@ signal switch_mask_mode
 signal player_took_damage
 signal player_dead
 signal level_can_be_loaded
+signal sanity_changed
 
 var mask_on := false
 var sanity_value := 0 #Max 100
@@ -41,8 +42,12 @@ func load_transition():
 
 func load_level():
 	remove_level()
-	if !FileAccess.file_exists("res://src/levels/Level"+ str(current_level) + ".tscn"):
+	if !FileAccess.file_exists("res://src/levels/level"+ str(current_level) + ".tscn"):
+		var win_screen = load("res://src/UI/winscreen.tscn")
+		var win_screen_instance = win_screen.instantiate()
+		get_tree().get_root().get_node("MAIN/WINOVERLAY").call_deferred("add_child",win_screen_instance)
 		return
+
 	var level = load("res://src/levels/level"+ str(current_level) + ".tscn")
 	var level_instance = level.instantiate()
 	get_tree().get_root().get_node("MAIN/LEVEL").call_deferred("add_child",level_instance)
@@ -57,3 +62,17 @@ func spawn_end_screen():
 	var end_screen = load("res://src/UI/end_screen_root.tscn")
 	var end_screen_instance = end_screen.instantiate()
 	get_tree().get_root().get_node("MAIN/ENDOVERLAY").call_deferred("add_child",end_screen_instance)
+
+func reset_player_values():
+	player_health = 6
+	sanity_value = 0
+
+
+func back_to_main():
+	reset_player_values()
+	current_level = 1
+	var menu_screen = load("res://src/UI/menu.tscn")
+	var menu_screen_instance = menu_screen.instantiate()
+	get_tree().get_root().get_node("MAIN/MENU").call_deferred("add_child",menu_screen_instance)
+	
+	

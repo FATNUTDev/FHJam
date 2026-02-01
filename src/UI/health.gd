@@ -3,12 +3,16 @@ extends Control
 @onready var snd = $"HBoxContainer/3-4"
 @onready var last = $"HBoxContainer/5-6"
 
-var i_full = Image.load_from_file("res://src/assets/hp/full.png")
-var full = ImageTexture.create_from_image(i_full)
-var i_half = Image.load_from_file("res://src/assets/hp/half.png")
-var half = ImageTexture.create_from_image(i_half)
-var i_empty = Image.load_from_file("res://src/assets/hp/empty.png")
-var empty = ImageTexture.create_from_image(i_empty)
+var full = load("res://src/assets/hp/full.png")
+var half = load("res://src/assets/hp/half.png")
+var empty = load("res://src/assets/hp/empty.png")
+
+#var i_full = Image.load_from_file("res://src/assets/hp/full.png")
+#var full = ImageTexture.create_from_image(i_full)
+#var i_half = Image.load_from_file("res://src/assets/hp/half.png")
+#var half = ImageTexture.create_from_image(i_half)
+#var i_empty = Image.load_from_file("res://src/assets/hp/empty.png")
+#var empty = ImageTexture.create_from_image(i_empty)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

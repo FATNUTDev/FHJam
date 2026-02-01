@@ -5,4 +5,4 @@ extends Control
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		Global.restart_level()
-		self.queue_free()
+		self.call_deferred("queue_free")
