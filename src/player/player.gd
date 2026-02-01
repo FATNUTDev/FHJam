@@ -75,6 +75,7 @@ func pick_mask():
 		Global.on_mask_switch()
 		if Global.mask_on:
 			Global.sanity_value += 1
+			Global.sanity_changed.emit()
 			sanity_timer.start()
 		else:
 			sanity_timer.stop()
@@ -87,6 +88,7 @@ func on_spike_collision():
 		spikes_collided = true
 		Global.player_health -= 1
 		Global.sanity_value += 5
+		Global.sanity_changed.emit()
 		Global.player_took_damage.emit()
 		if velocity.x == 0:
 			velocity.x = -SPEED*3*prev_direction
@@ -104,6 +106,7 @@ func on_player_dead_signal():
 
 func _on_sanity_timer_timeout() -> void:
 	Global.sanity_value += 1
+	Global.sanity_changed.emit()
 	#print(Global.sanity_value)
 
 func debug_input(): #Use this to debug anything you want, remove the others code down here.

@@ -24,15 +24,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -160.0
-offset_top = 16.0
-offset_right = -120.0
-offset_bottom = 56.0
+offset_left = -188.99994
+offset_top = 24.0
+offset_right = -149.0
+offset_bottom = 64.0
 grow_horizontal = 0
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 value = 75.0
 texture_under = ExtResource("2_p5eb6")
 texture_over = ExtResource("3_aqumb")
 texture_progress = ExtResource("4_c6fdt")
 
 [node name="Health-Bar" parent="." instance=ExtResource("5_p5eb6")]
+scale = Vector2(5, 5)

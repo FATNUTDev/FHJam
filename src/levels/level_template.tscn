@@ -2,54 +2,45 @@
 
 [ext_resource type="Script" uid="uid://cb5qevib5r7y8" path="res://src/levels/level_template.gd" id="1_2ap0n"]
 [ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="1_jmmgl"]
+[ext_resource type="Texture2D" uid="uid://dggtn3un06jjk" path="res://src/assets/textures/background.png" id="2_t1prb"]
 [ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="2_tphog"]
 [ext_resource type="PackedScene" uid="uid://dw5sd1jnsf2l1" path="res://src/levels/portal/portal.tscn" id="3_ync2b"]
 [ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="4_nm6nc"]
-[ext_resource type="PackedScene" uid="uid://cj4yym7wknlsi" path="res://src/Spikes/Spikes.tscn" id="5_tphog"]
-[ext_resource type="PackedScene" uid="uid://dho05d7ejym5e" path="res://src/Trampoline/Trampoline.tscn" id="7_t1prb"]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_2ap0n")
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -50
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+texture = ExtResource("2_t1prb")
+
 [node name="hud" parent="." instance=ExtResource("2_tphog")]
 
 [node name="StaticTileLayer" parent="." instance=ExtResource("1_jmmgl")]
-tile_map_data = PackedByteArray("AAD0//r/AwAEAAAAAAD0//v/AwADAAEAAAD0//z/AwADAAEAAAD0//3/AwADAAEAAAD0//7/AwADAAEAAAD0////AwADAAEAAAD0/wAAAwADAAEAAAD0/wEAAwADAAEAAAD0/wIAAwADAAEAAAD0/wMAAwADAAEAAAD0/wQAAwADAAEAAAD0/wUAAwAEAAMAAAD1/wUAAwABAAMAAAD2/wUAAwABAAMAAAD3/wUAAwABAAMAAAD4/wUAAwABAAMAAAD5/wUAAwABAAMAAAD6/wUAAwAIAAMAAAD7/wUAAwABAAMAAAD8/wUAAwABAAMAAAD9/wUAAwABAAMAAAD+/wUAAwABAAMAAAD//wUAAwABAAMAAAAAAAUAAwABAAMAAAABAAUAAwABAAMAAAACAAUAAwABAAMAAAADAAUAAwABAAMAAAAEAAUAAwABAAMAAAAFAAUAAwABAAMAAAAGAAUAAwABAAMAAAAHAAUAAwABAAMAAAAIAAUAAwABAAMAAAAJAAUAAwAHAAMAAAAJAAQAAwADAAEAAAAJAAMAAwADAAEAAAAJAAIAAwADAAEAAAAJAAEAAwADAAEAAAAJAAAAAwADAAEAAAAJAP//AwADAAEAAAAJAP7/AwADAAEAAAAJAP3/AwADAAEAAAAJAPz/AwADAAEAAAAJAPv/AwADAAEAAAAJAPr/AwAHAAAAAAAIAPr/AwABAAMAAAAHAPr/AwABAAMAAAAGAPr/AwABAAMAAAAFAPr/AwABAAMAAAAEAPr/AwABAAMAAAD7//r/AwABAAMAAAD6//r/AwABAAMAAAD5//r/AwABAAMAAAD4//r/AwABAAMAAAD3//r/AwABAAMAAAD2//r/AwABAAMAAAD1//r/AwABAAMAAAD8//r/AwABAAMAAAD9//r/AwABAAMAAAD+//r/AwABAAMAAAD///r/AwABAAMAAAAAAPr/AwABAAMAAAABAPr/AwABAAMAAAACAPr/AwABAAMAAAADAPr/AwABAAMAAAD6/wQAAwADAAEAAAD6/wMAAwADAAAAAAA=")
 
 [node name="MaskOnTileLayer" parent="." instance=ExtResource("1_jmmgl")]
-tile_map_data = PackedByteArray("AAAHAAQAAwAAAAIAAAAHAAMAAwAAAAEAAAAIAAMAAwACAAEAAAAIAAQAAwACAAIAAAAIAAIAAwACAAEAAAAHAAIAAwAAAAEAAAAHAAEAAwAAAAAAAAAIAAEAAwACAAAAAAAFAAIAAwACAAAAAAAFAAMAAwACAAEAAAAFAAQAAwACAAIAAAAEAAQAAwAAAAIAAAAEAAMAAwAAAAEAAAAEAAIAAwAAAAAAAAA=")
 
 [node name="MaskOffTileLayer" parent="." instance=ExtResource("1_jmmgl")]
-tile_map_data = PackedByteArray("AAACAAQAAwADAAIAAAACAAMAAwAHAAAAAAABAAMAAwAAAAMAAAA=")
 
 [node name="Portal" parent="." instance=ExtResource("3_ync2b")]
-position = Vector2(144, -8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_nm6nc")]
-position = Vector2(-176, 88)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2.8, 2.8)
-editor_draw_limits = true
 
 [node name="SpikeParent1" type="Node2D" parent="."]
-position = Vector2(-80, 80)
-
-[node name="Spikes" parent="SpikeParent1" instance=ExtResource("5_tphog")]
 
 [node name="SpikeParent2" type="Node2D" parent="."]
 process_mode = 4
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-24, 80)
-
-[node name="Spikes" parent="SpikeParent2" instance=ExtResource("5_tphog")]
 
 [node name="SpikeParent3" type="Node2D" parent="."]
 process_mode = 4
 modulate = Color(1, 1, 1, 0)
-position = Vector2(24, 80)
-
-[node name="Spikes" parent="SpikeParent3" instance=ExtResource("5_tphog")]
-
-[node name="Trampoline" parent="." instance=ExtResource("7_t1prb")]
-position = Vector2(-134, 88)

@@ -4,6 +4,7 @@ signal switch_mask_mode
 signal player_took_damage
 signal player_dead
 signal level_can_be_loaded
+signal sanity_changed
 
 var mask_on := false
 var sanity_value := 0 #Max 100
