@@ -1,9 +1,71 @@
-[gd_scene load_steps=3 format=3 uid="uid://dho05d7ejym5e"]
+[gd_scene load_steps=7 format=3 uid="uid://dho05d7ejym5e"]
 
 [ext_resource type="Script" uid="uid://dsvk8wrbc257i" path="res://src/Trampoline/trampoline.gd" id="1_7hkkq"]
+[ext_resource type="Texture2D" uid="uid://b35hht806kseu" path="res://src/assets/trampoline/slime.png" id="2_4384g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihyo2"]
-size = Vector2(20, 8)
+size = Vector2(23.8, 6.5)
+
+[sub_resource type="Animation" id="Animation_4384g"]
+resource_name = "reaction"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2.9)]
+}
+
+[sub_resource type="Animation" id="Animation_a8mc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tif5v"]
+_data = {
+&"RESET": SubResource("Animation_a8mc7"),
+&"reaction": SubResource("Animation_4384g")
+}
 
 [node name="Trampoline" type="Node2D"]
 script = ExtResource("1_7hkkq")
@@ -11,12 +73,19 @@ script = ExtResource("1_7hkkq")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ihyo2")
-debug_color = Color(0, 0.5803922, 0.8117647, 1)
+debug_color = Color(0, 0.5803922, 0.8117647, 0.41568628)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(0, -4)
-scale = Vector2(0.12499999, 0.062499996)
+position = Vector2(0, -8.6)
+scale = Vector2(1.3333334, 1.3333334)
+texture = ExtResource("2_4384g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tif5v")
+}
+speed_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
