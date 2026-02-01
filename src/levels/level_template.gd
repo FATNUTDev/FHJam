@@ -9,9 +9,10 @@ extends Node2D
 func _ready() -> void:
 	Global.mask_on = false
 	Global.switch_mask_mode.connect(switch_on_mask_signal)
+	Global.sanity_changed.connect(update_sanity)
 	switch_on_mask_signal()
 
-func _process(delta: float) -> void:
+func update_sanity():
 	if Global.sanity_value >= 34:
 		show_second_spikes()
 	if Global.sanity_value >= 67:
@@ -22,7 +23,7 @@ func switch_on_mask_signal():
 	mask_off_layer.collision_enabled = !Global.mask_on
 	portal.visible = Global.mask_on
 	
-	if Global.mask_on: #TODO
+	if Global.mask_on:
 		mask_on_layer.modulate = Color(1,0.3,0.3,1)
 		mask_off_layer.modulate = Color(0.3,0.3,1,1)
 	else:
