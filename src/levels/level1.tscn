@@ -1,1 +1,51 @@
+[gd_scene load_steps=7 format=4 uid="uid://dg15c4fqcwti6"]
 
+[ext_resource type="Script" uid="uid://cb5qevib5r7y8" path="res://src/levels/level_template.gd" id="1_bn18y"]
+[ext_resource type="Texture2D" uid="uid://dggtn3un06jjk" path="res://src/assets/textures/background.png" id="2_tyup7"]
+[ext_resource type="PackedScene" uid="uid://bkxmr05ju6qst" path="res://src/UI/hud.tscn" id="3_ou3gi"]
+[ext_resource type="PackedScene" uid="uid://6rqjgvlqe0od" path="res://src/assets/tilemap/tilemap.tscn" id="4_juu1d"]
+[ext_resource type="PackedScene" uid="uid://dw5sd1jnsf2l1" path="res://src/levels/portal/portal.tscn" id="5_ipgu1"]
+[ext_resource type="PackedScene" uid="uid://bvsw8wtjsnxml" path="res://src/player/player.tscn" id="6_bsnmq"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_bn18y")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -50
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+texture = ExtResource("2_tyup7")
+
+[node name="hud" parent="." instance=ExtResource("3_ou3gi")]
+
+[node name="StaticTileLayer" parent="." instance=ExtResource("4_juu1d")]
+tile_map_data = PackedByteArray("AAAAAAYAAwADAAEAAAAAAAUAAwAEAAQAAAAAAAQAAwADAAEAAAAAAAMAAwADAAEAAAAAAAIAAwAEAAEAAAAAAAEAAwAAAAEAAAAAAAAAAwAAAAAAAAABAAAAAwABAAAAAAACAAAAAwABAAAAAAADAAAAAwAFAAAAAAAEAAAAAwABAAMAAAAFAAAAAwABAAMAAAAGAAAAAwABAAMAAAAHAAAAAwABAAMAAAAIAAAAAwABAAMAAAAJAAAAAwABAAMAAAAKAAAAAwABAAMAAAAPAAAAAwAGAAAAAAAOAAAAAwABAAMAAAANAAAAAwABAAMAAAAMAAAAAwABAAMAAAALAAAAAwABAAMAAAAQAAAAAwABAAAAAAARAAAAAwABAAAAAAASAAAAAwABAAAAAAATAAAAAwACAAAAAAATAAEAAwACAAEAAAATAAIAAwACAAEAAAATAAMAAwAHAAEAAAATAAQAAwADAAEAAAATAAUAAwADAAEAAAATAAYAAwADAAEAAAATAAcAAwAHAAIAAAATAAgAAwACAAEAAAATAAkAAwACAAEAAAATAAoAAwACAAIAAAASAAoAAwABAAIAAAARAAoAAwAGAAMAAAAQAAoAAwABAAMAAAAPAAoAAwABAAMAAAAOAAoAAwABAAMAAAANAAoAAwABAAMAAAAMAAoAAwABAAMAAAALAAoAAwABAAMAAAAKAAoAAwABAAMAAAAJAAoAAwABAAMAAAAIAAoAAwABAAMAAAAHAAoAAwABAAMAAAAGAAoAAwABAAMAAAAFAAoAAwABAAMAAAAEAAoAAwABAAMAAAADAAoAAwABAAMAAAACAAoAAwABAAMAAAABAAoAAwAFAAMAAAAAAAoAAwAAAAIAAAAAAAkAAwAEAAIAAAAAAAgAAwADAAEAAAAAAAcAAwADAAEAAAABAAkAAwACAAAAAAABAAEAAwAFAAEAAAACAAEAAwABAAIAAAABAAIAAwACAAIAAAADAAEAAwACAAIAAAAQAAEAAwABAAIAAAARAAEAAwABAAIAAAASAAEAAwAGAAEAAAAPAAEAAwAAAAIAAAASAAIAAwAAAAEAAAASAAMAAwAAAAIAAAASAAcAAwAAAAAAAAASAAgAAwAGAAIAAAARAAgAAwAAAAAAAAARAAkAAwAAAAEAAAASAAkAAwABAAEAAAABAAUAAwABAAMAAAACAAUAAwABAAMAAAADAAUAAwACAAMAAAA=")
+
+[node name="MaskOnTileLayer" parent="." instance=ExtResource("4_juu1d")]
+tile_map_data = PackedByteArray("AAAFAAkAAwADAAIAAAAFAAgAAwADAAEAAAAFAAcAAwADAAEAAAAFAAYAAwADAAAAAAAJAAkAAwADAAIAAAAJAAgAAwADAAAAAAALAAkAAwADAAMAAAA=")
+
+[node name="MaskOffTileLayer" parent="." instance=ExtResource("4_juu1d")]
+tile_map_data = PackedByteArray("AAAHAAkAAwADAAIAAAAHAAgAAwADAAEAAAAHAAcAAwADAAAAAAA=")
+
+[node name="Portal" parent="." instance=ExtResource("5_ipgu1")]
+position = Vector2(48, 72)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_bsnmq")]
+position = Vector2(56, 180)
+
+[node name="SpikeParent1" type="Node2D" parent="."]
+
+[node name="SpikeParent2" type="Node2D" parent="."]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)
+
+[node name="SpikeParent3" type="Node2D" parent="."]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)

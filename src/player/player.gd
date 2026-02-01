@@ -18,6 +18,7 @@ func _ready() -> void:
 func check_player_stats():
 	if Global.sanity_value > 99 or Global.player_health <= 0:
 		Global.on_player_dead()
+		Global.reset_player_values()
 
 func _physics_process(delta: float) -> void:
 	#Check Player sanity and health
