@@ -69,6 +69,7 @@ debug={
 2d_physics/layer_4="no_mask_only"
 2d_physics/layer_5="portal"
 2d_physics/layer_6="spikes"
+2d_physics/layer_7="items"
 
 [rendering]
 
