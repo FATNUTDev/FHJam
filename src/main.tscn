@@ -15,7 +15,6 @@
 [node name="SCREENOVERLAY" type="CanvasLayer" parent="."]
 
 [node name="ENDOVERLAY" type="CanvasLayer" parent="."]
-
 [node name="AUDIO" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" parent="AUDIO" instance=ExtResource("4_3cfgd")]
