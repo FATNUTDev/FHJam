@@ -42,7 +42,7 @@ func load_transition():
 
 func load_level():
 	remove_level()
-	if !FileAccess.file_exists("res://src/levels/Level"+ str(current_level) + ".tscn"):
+	if !FileAccess.file_exists("res://src/levels/level"+ str(current_level) + ".tscn"):
 		return
 	var level = load("res://src/levels/level"+ str(current_level) + ".tscn")
 	var level_instance = level.instantiate()
